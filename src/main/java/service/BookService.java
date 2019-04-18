@@ -12,6 +12,6 @@ public interface BookService {
 
     boolean saveBook(Book book);
 
-    boolean deleteBook(Book book);
+    boolean deleteBook(Long id);
 
 }

@@ -37,9 +37,9 @@ public class BookServiceImp implements BookService {
         }
     }
 
-    public boolean deleteBook(Book book) {
+    public boolean deleteBook(Long id) {
         try {
-            repository.delete(book);
+            repository.deleteById(id);
             return true;
         } catch (Exception e) {
             return false;
