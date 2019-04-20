@@ -1,6 +1,6 @@
-package controller;
+package spring.controller;
 
-import model.Book;
+import spring.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import service.BookService;
+import spring.service.BookService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

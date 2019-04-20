@@ -1,9 +1,9 @@
-package service;
+package spring.service;
 
-import model.Book;
+import spring.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.BookRepository;
+import spring.repository.BookRepository;
 
 import java.util.ArrayList;
 import java.util.List;

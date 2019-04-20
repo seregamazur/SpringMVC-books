@@ -1,6 +1,6 @@
-package service;
+package spring.service;
 
-import model.Book;
+import spring.model.Book;
 
 import java.util.List;
 
