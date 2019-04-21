@@ -1,4 +1,4 @@
-package spring.model;
+package spring.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "Book")
 public class Book {
     @Id
     @GeneratedValue
@@ -50,11 +50,11 @@ public class Book {
     }
 
 
-    Long getId() {
+    public Long getId() {
         return id;
     }
 
-    void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -13,12 +13,10 @@
 <form:form method="POST" action="addBook" modelAttribute="book">
     <table>
         <tr>
-            <td><form:label path="bookName">Book Name</form:label></td>
-            <td><form:input path="bookName"/></td>
-            <td><form:label path="authorName">Book Author</form:label></td>
-            <td><form:input path="authorName"/></td>
-            <td><form:label path="firstName">First Name</form:label></td>
-            <td><form:input path="firstName"/></td>
+            <td><form:label path="name">Book Name</form:label></td>
+            <td><form:input path="name"/></td>
+            <td><form:label path="author">Book Author</form:label></td>
+            <td><form:input path="author"/></td>
             <td><form:label path="price">Price</form:label></td>
             <td><form:input path="price"/></td>
         </tr>

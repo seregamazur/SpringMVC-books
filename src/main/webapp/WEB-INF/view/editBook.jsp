@@ -15,12 +15,12 @@
     <form:hidden path="id" />
     <table>
         <tr>
-            <td><form:label path="bookName">Book Name</form:label></td>
-            <td><form:input path="bookName"/></td>
+            <td><form:label path="name">Book Name</form:label></td>
+            <td><form:input path="name"/></td>
         </tr>
         <tr>
-            <td><form:label path="authorName">Author Name</form:label></td>
-            <td><form:input path="authorName"/></td>
+            <td><form:label path="author">Author Name</form:label></td>
+            <td><form:input path="author"/></td>
         </tr>
         <tr>
             <td><form:label path="price">Price</form:label></td>

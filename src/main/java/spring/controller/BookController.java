@@ -1,6 +1,6 @@
 package spring.controller;
 
-import spring.model.Book;
+import spring.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -23,7 +23,7 @@ public class BookController {
     public BookController(BookService service) {
         this.service = service;
     }
-
+    BookController(){}
 
     @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
     public ModelAndView home(HttpServletResponse response) throws IOException {
@@ -33,11 +33,11 @@ public class BookController {
     }
 
     //get Book
-    @RequestMapping(value = {"/books"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/allBooks"}, method = RequestMethod.GET)
     public ModelAndView displayAllBooks() {
         ModelAndView mv = new ModelAndView();
         List<Book> books = service.getAllBooks();
-        mv.addObject("All books", books);
+        mv.addObject("bookList", books);
         mv.setViewName("allBooks");
         return mv;
     }
@@ -89,7 +89,7 @@ public class BookController {
     }
 
     @RequestMapping(value = "/deleteBook/{id}", method = RequestMethod.GET)
-    public ModelAndView deleteUserById(@PathVariable Long id) {
+    public ModelAndView deleteBookById(@PathVariable Long id) {
         boolean isDeleted = service.deleteBook(id);
         System.out.println("DELETED???: " + isDeleted);
         return new ModelAndView("redirect:/home");

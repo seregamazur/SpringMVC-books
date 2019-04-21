@@ -12,8 +12,8 @@
 <br>
 <br>
 <br>
-<form action="allBooks" method="post">
-    <input type="submit" value="List All Users" />
+<form action="allBooks" method="get">
+    <input type="submit" value="List All Books" />
 </form>
 </body>
 </html>

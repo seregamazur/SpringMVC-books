@@ -1,6 +1,6 @@
 package spring.service;
 
-import spring.model.Book;
+import spring.entity.Book;
 
 import java.util.List;
 

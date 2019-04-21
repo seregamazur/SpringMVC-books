@@ -1,22 +1,26 @@
 package spring.service;
 
-import spring.model.Book;
+import spring.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spring.repository.BookRepository;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class BookServiceImp implements BookService {
 
-    private final BookRepository repository;
+    private  BookRepository repository;
 
     @Autowired
     public BookServiceImp(BookRepository repository) {
+        super();
         this.repository = repository;
     }
+    BookServiceImp(){}
 
     public Book getBookById(Long id) {
         return repository.findById(id).get();

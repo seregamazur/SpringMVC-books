@@ -31,13 +31,13 @@ ${message}
     <tbody>
     <c:forEach var="book" items="${bookList}">
         <tr>
-            <td>${book.firstName}</td>
-            <td>${book.lastName}</td>
-            <td>${book.userName}</td>
+            <td>${book.name}</td>
+            <td>${book.author}</td>
+            <td>${book.price}</td>
             <td><a
-                    href="${pageContext.request.contextPath}/editUser/${book.id}">Edit</a></td>
+                    href="${pageContext.request.contextPath}/editBook/${book.id}">Edit</a></td>
             <td><a
-                    href="${pageContext.request.contextPath}/deleteUser/${book.id}">Delete</a></td>
+                    href="${pageContext.request.contextPath}/deleteBook/${book.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
