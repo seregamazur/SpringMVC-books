@@ -1,10 +1,10 @@
-package spring.service;
+package spring.dao;
 
 import spring.entity.Book;
 
 import java.util.List;
 
-public interface BookService {
+public interface BookDAO {
 
     Book getBookById(Long id);
 

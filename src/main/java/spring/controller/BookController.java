@@ -1,6 +1,5 @@
 package spring.controller;
 
-import spring.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -9,7 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import spring.service.BookService;
+import spring.dao.BookDAO;
+import spring.entity.Book;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -17,13 +17,13 @@ import java.util.List;
 
 @Controller
 public class BookController {
-    private BookService service;
+
+    private final BookDAO dao;
 
     @Autowired
-    public BookController(BookService service) {
-        this.service = service;
+    BookController(BookDAO dao) {
+        this.dao = dao;
     }
-    BookController(){}
 
     @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
     public ModelAndView home(HttpServletResponse response) throws IOException {
@@ -36,7 +36,7 @@ public class BookController {
     @RequestMapping(value = {"/allBooks"}, method = RequestMethod.GET)
     public ModelAndView displayAllBooks() {
         ModelAndView mv = new ModelAndView();
-        List<Book> books = service.getAllBooks();
+        List<Book> books = dao.getAllBooks();
         mv.addObject("bookList", books);
         mv.setViewName("allBooks");
         return mv;
@@ -56,7 +56,7 @@ public class BookController {
         if (result.hasErrors()) {
             return new ModelAndView("error");
         }
-        boolean isAdded = service.saveBook(book);
+        boolean isAdded = dao.saveBook(book);
         if (isAdded) {
             mv.addObject("message", "New Book successfully added");
         } else {
@@ -68,7 +68,7 @@ public class BookController {
     @RequestMapping(value = {"/editBook/{id}"}, method = RequestMethod.GET)
     public ModelAndView displayEditForm(@PathVariable Long id) {
         ModelAndView mv = new ModelAndView("editBook");
-        Book book = service.getBookById(id);
+        Book book = dao.getBookById(id);
         mv.addObject("headerMessage!!!!!1", "Edit Book Details");
         mv.addObject("book", book);
         return mv;
@@ -81,7 +81,7 @@ public class BookController {
             System.out.println(result.toString());
             return new ModelAndView("error");
         }
-        boolean isSaved = service.saveBook(book);
+        boolean isSaved = dao.saveBook(book);
         if (!isSaved) {
             return new ModelAndView("error");
         }
@@ -90,7 +90,7 @@ public class BookController {
 
     @RequestMapping(value = "/deleteBook/{id}", method = RequestMethod.GET)
     public ModelAndView deleteBookById(@PathVariable Long id) {
-        boolean isDeleted = service.deleteBook(id);
+        boolean isDeleted = dao.deleteBook(id);
         System.out.println("DELETED???: " + isDeleted);
         return new ModelAndView("redirect:/home");
     }

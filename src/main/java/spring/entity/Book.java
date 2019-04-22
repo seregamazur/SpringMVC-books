@@ -1,15 +1,7 @@
 package spring.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "Book")
 public class Book {
-    @Id
-    @GeneratedValue
     private Long id;
     private String name;
     private String author;
