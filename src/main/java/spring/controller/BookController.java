@@ -81,8 +81,8 @@ public class BookController {
             System.out.println(result.toString());
             return new ModelAndView("error");
         }
-        boolean isSaved = dao.saveBook(book);
-        if (!isSaved) {
+        boolean isUpdated = dao.updateBook(book);
+        if (!isUpdated) {
             return new ModelAndView("error");
         }
         return mv;

@@ -29,23 +29,13 @@ public class BookDAOImp implements BookDAO {
 
     @Override
     public boolean saveBook(Book book) {
-        if(book.getId()==null){
-            String SQL = "insert into Book(name,author,price) values (?,?,?)";
-            try {
-                template.update(SQL, book.getName(), book.getAuthor(), book.getPrice());
-                return true;
-            } catch (Exception e) {
-                return false;
-            }}
-        else{
-            String updateSQL = "update Book set name = ? ,author = ? , price = ? where id = ?";
-            try{
-                template.update(updateSQL,book.getName(), book.getAuthor(), book.getPrice(),book.getId());
-                return true;
-            }catch (Exception e){
-                return false;
-            }
-        }}
+        String SQL = "insert into Book(name,author,price) values (?,?,?)";
+        try {
+            template.update(SQL, book.getName(), book.getAuthor(), book.getPrice());
+            return true;
+        } catch (Exception e) {
+        } return false;
+    }
 
     @Override
     public boolean deleteBook(Long id) {
@@ -54,6 +44,17 @@ public class BookDAOImp implements BookDAO {
             template.update(SQL, id);
             return true;
         } catch (Exception e) {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean updateBook(Book book) {
+        String updateSQL = "update Book set name = ? ,author = ? , price = ? where id = ?";
+        try{
+            template.update(updateSQL,book.getName(), book.getAuthor(), book.getPrice(),book.getId());
+            return true;
+        }catch (Exception e){
             return false;
         }
     }
