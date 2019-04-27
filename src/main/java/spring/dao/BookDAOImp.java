@@ -29,14 +29,23 @@ public class BookDAOImp implements BookDAO {
 
     @Override
     public boolean saveBook(Book book) {
-        String SQL = "insert into Book(name,author,price) values (?,?,?)";
-        try {
-            template.update(SQL, book.getName(), book.getAuthor(), book.getPrice());
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+        if(book.getId()==null){
+            String SQL = "insert into Book(name,author,price) values (?,?,?)";
+            try {
+                template.update(SQL, book.getName(), book.getAuthor(), book.getPrice());
+                return true;
+            } catch (Exception e) {
+                return false;
+            }}
+        else{
+            String updateSQL = "update Book set name = ? ,author = ? , price = ? where id = ?";
+            try{
+                template.update(updateSQL,book.getName(), book.getAuthor(), book.getPrice(),book.getId());
+                return true;
+            }catch (Exception e){
+                return false;
+            }
+        }}
 
     @Override
     public boolean deleteBook(Long id) {
